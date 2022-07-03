@@ -29,13 +29,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  // void _incrementCounter() {
-  //   setState(() {
-  //     _counter++;
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -71,9 +64,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               onPressed: () { },
               child: Text('이미지2'),
-            ),
+            )
 
-            Icon(Icons.star)
           ],
         ),
       ),
@@ -164,18 +156,27 @@ class SecondRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('이미지 화면'),
-      ),
-      body: Center(
-        child: ElevatedButton(
+    return Center(
+      child: ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
           },
           child: Image.asset("images/cat.png")
-        ),
       ),
     );
+
+    // return Scaffold(
+      // // appBar: AppBar(
+      // //   title: const Text('이미지 화면'),
+      // // ),
+      // body: Center(
+      //   child: ElevatedButton(
+      //     onPressed: () {
+      //       Navigator.pop(context);
+      //     },
+      //     child: Image.asset("images/cat.png")
+      //   ),
+      // ),
+    // );
   }
 }
