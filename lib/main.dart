@@ -7,7 +7,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -62,7 +61,12 @@ class _MyHomePageState extends State<MyHomePage> {
               style: ButtonStyle(
                 foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
               ),
-              onPressed: () { },
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ThirdRoute()),
+                 );
+                },
               child: Text('이미지2'),
             )
 
@@ -72,24 +76,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
       bottomNavigationBar: new GestureDetector(
-          onTap: () {
-            print("GestureDetector clicked");
-          },
-          child: Container(
-              height: 55,
-              color: Colors.blueGrey,
-              child: new Column(children: [Icon(Icons.home), Text('홈')])
-          )
+        onTap: () {
+          print("GestureDetector clicked");
+        },
+        child: Container(
+            height: 55,
+            color: Colors.blueGrey,
+            child: new Column(children: [Icon(Icons.home), Text('홈')])
+        )
       ),
 
       //
       endDrawer:
         Drawer(
-          // Add a ListView to the drawer. This ensures the user can scroll
-          // through the options in the drawer if there isn't enough vertical
-          // space to fit everything.
           child: ListView(
-            // Important: Remove any padding from the ListView.
             padding: EdgeInsets.zero,
             children: [
               const DrawerHeader(
@@ -156,27 +156,73 @@ class SecondRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
+    // return Center(
+    //   child: ElevatedButton(
+    //       onPressed: () {
+    //         Navigator.pop(context);
+    //       },
+    //       child: Image.asset("images/cat.png")
+    //   ),
+    // );
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('이미지 화면'),
+      ),
+      body: Center(
+        child: ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
           },
           child: Image.asset("images/cat.png")
+        ),
       ),
     );
-
-    // return Scaffold(
-      // // appBar: AppBar(
-      // //   title: const Text('이미지 화면'),
-      // // ),
-      // body: Center(
-      //   child: ElevatedButton(
-      //     onPressed: () {
-      //       Navigator.pop(context);
-      //     },
-      //     child: Image.asset("images/cat.png")
-      //   ),
-      // ),
-    // );
   }
+}
+
+class ThirdRoute extends StatelessWidget {
+  const ThirdRoute({super.key});
+
+  @override
+  Widget build(BuildContext) {
+    return Row(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const Text('dd'),
+          ],
+        ),
+      ],
+    );
+  }
+
+  // Widget build(BuildContext context) {
+  //   return Scaffold(
+  //     appBar: AppBar(
+  //       title: const Text('이미지 화면'),
+  //     ),
+  //     body: Row(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       children: [
+  //         Container(
+  //           width: 100,
+  //           height: 100,
+  //           color: Colors.red,
+  //         ),
+  //         Container(
+  //           width: 100,
+  //           height: 100,
+  //           color: Colors.yellow,
+  //         ),
+  //         Container(
+  //           width: 100,
+  //           height: 100,
+  //           color: Colors.green,
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 }
